@@ -23,6 +23,8 @@ public class PlatformConfigProperties {
 
     private GmailSetting gmailSetting;
 
+    private String passwordPolicy;
+
     @Data
     public static class Crypto {
 
