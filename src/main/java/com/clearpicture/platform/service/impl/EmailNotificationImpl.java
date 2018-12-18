@@ -15,6 +15,9 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -52,62 +55,126 @@ public class EmailNotificationImpl implements NotificationService {
     }
 
 
-    public boolean createAndSendEmail(Properties mailProperties, Session mailSession, NotificationContent notificationContent) {
-
-        String recipients[] = notificationContent.getRecipients();
-        String subject = notificationContent.getSubject();
-        String body = notificationContent.getBodyContent();
-        String emailHost = configs.getGmailSetting().getHost();
-        String sender = configs.getGmailSetting().getSenderMail();
-        String senderPassword = configs.getGmailSetting().getSenderPassword();
+//
 
 
-        log.info("...........recipients[]............" + recipients.toString());
-        log.info("...........subject............" + subject);
-        log.info("...........body............" + body);
-        log.info("...........emailHost............" + emailHost);
-        log.info("...........sender............" + sender);
-        log.info("...........senderPassword............" + senderPassword);
+    @Override
+    public boolean sendNotification(List<NotificationContent> notificationContents) {
+
+        Properties properties = getEmailProperties();
+        Session mailSession = Session.getDefaultInstance(properties, null);
+        boolean result = createAndSendEmail(properties, mailSession, notificationContents);
+        return result;
+    }
 
 
-        MimeMessage emailMessage = new MimeMessage(mailSession);
+
+    public boolean createAndSendEmail(Properties mailProperties, Session mailSession, List<NotificationContent> contentList) {
+
 
         boolean successStatus = false;
-
         try {
 
-            for (String recipient : recipients) {
-                emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-            }
 
-            emailMessage.setSubject(subject);
-            emailMessage.setContent(body, "text/html");
+            String emailHost = configs.getGmailSetting().getHost();
+            String sender = configs.getGmailSetting().getSenderMail();
+            String senderPassword = configs.getGmailSetting().getSenderPassword();
+
+            log.info("...........emailHost............" + emailHost);
+            log.info("...........sender............" + sender);
+            log.info("...........senderPassword............" + senderPassword);
+
             Transport transport = mailSession.getTransport("smtp");
             transport.connect(emailHost, sender, senderPassword);
-            transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+
+            contentList.forEach(content -> {
+                MimeMessage emailMessage = new MimeMessage(mailSession);
+                String recipient = content.getRecipient();
+                String subject = content.getSubject();
+                String bodyContent = content.getBodyContent();
+
+                try {
+                    emailMessage.setFrom(new InternetAddress(sender));
+                    emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+                    emailMessage.setSubject(subject);
+                    emailMessage.setContent(bodyContent, "text/html");
+                    emailMessage.setSentDate(new Date());
+
+                    transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+
+                } catch (AddressException addrEx) {
+                    log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : ADDRESS SETTING..........");
+                    addrEx.printStackTrace();
+                    throw new ComplexValidationException("emailService", "createAndSendEmail.addressSettingError");
+                } catch (MessagingException msgEx) {
+                    log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : MESSAGE EXCEPTION..........");
+                    msgEx.printStackTrace();
+                    throw new ComplexValidationException("emailService", "createAndSendEmail.messageWentWrong.");
+                }
+            });
+
             transport.close();
             successStatus = true;
 
-        } catch (AddressException addrEx) {
-            log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : ADDRESS SETTING..........");
-            addrEx.printStackTrace();
-            throw new ComplexValidationException("emailService", "addressSettingError");
-        } catch (MessagingException msgEx) {
-            log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : MESSAGE EXCEPTION..........");
-            msgEx.printStackTrace();
-            throw new ComplexValidationException("emailService", "messageWentWrong.");
+        } catch (Exception ex) {
+            log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : Transport Setting..........");
+            ex.printStackTrace();
+            throw new ComplexValidationException("emailService", "createAndSendEmail.transportSetting.");
         }
 
         return successStatus;
     }
 
+// OLD VERSION OF EMAIL SENDERS
+//    public boolean createAndSendEmail(Properties mailProperties, Session mailSession, NotificationContent notificationContent) {
+//
+//
+//        String recipients = notificationContent.getRecipient();
+//        String subject = notificationContent.getSubject();
+//        String body = notificationContent.getBodyContent();
+//        String emailHost = configs.getGmailSetting().getHost();
+//        String sender = configs.getGmailSetting().getSenderMail();
+//        String senderPassword = configs.getGmailSetting().getSenderPassword();
+//
+//
+//        log.info("...........recipients[]............" + recipients.toString());
+//        log.info("...........subject............" + subject);
+//        log.info("...........body............" + body);
+//        log.info("...........emailHost............" + emailHost);
+//        log.info("...........sender............" + sender);
+//        log.info("...........senderPassword............" + senderPassword);
+//
+//
+//        MimeMessage emailMessage = new MimeMessage(mailSession);
+//
+//        boolean successStatus = false;
+//
+//        try {
+//
+//            for (String recipient : recipients) {
+//                emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+//            }
+//
+//            emailMessage.setSubject(subject);
+//            emailMessage.setContent(body, "text/html");
+//            Transport transport = mailSession.getTransport("smtp");
+//            transport.connect(emailHost, sender, senderPassword);
+//            transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+//            transport.close();
+//            successStatus = true;
+//
+//        } catch (AddressException addrEx) {
+//            log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : ADDRESS SETTING..........");
+//            addrEx.printStackTrace();
+//            throw new ComplexValidationException("emailService", "addressSettingError");
+//        } catch (MessagingException msgEx) {
+//            log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : MESSAGE EXCEPTION..........");
+//            msgEx.printStackTrace();
+//            throw new ComplexValidationException("emailService", "messageWentWrong.");
+//        }
+//
+//        return successStatus;
+//    }
 
-    @Override
-    public boolean sendNotification(NotificationContent notificationContent) {
 
-        Properties properties = getEmailProperties();
-        Session mailSession = Session.getDefaultInstance(properties, null);
-        boolean result = createAndSendEmail(properties, mailSession, notificationContent);
-        return result;
-    }
 }

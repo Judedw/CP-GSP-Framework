@@ -3,6 +3,8 @@ package com.clearpicture.platform.service;
 
 import com.clearpicture.platform.dto.model.NotificationContent;
 
+import java.util.List;
+
 /**
  * created by Raveen -  18/12/07
  * Domain class for assign notification content for notification service - Initiate from JA-11
@@ -11,5 +13,7 @@ import com.clearpicture.platform.dto.model.NotificationContent;
  */
 public interface NotificationService {
 
-    public boolean sendNotification(NotificationContent notificationContent);
+    public boolean sendNotification(List<NotificationContent> notificationContents);
+
+
 }
