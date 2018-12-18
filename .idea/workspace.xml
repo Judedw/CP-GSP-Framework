@@ -1,32 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a13afaf-14c7-435b-a124-2f549e05c0e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/enums/UserStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/annotation/PasswordPolicy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/validator/PasswordPolicyValidator.java" afterDir="false" />
+    <list default="true" id="2a13afaf-14c7-435b-a124-2f549e05c0e6" name="Default Changelist" comment="need to remove those from the git">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/componant/StaticApplicationContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/configuration/PlatformConfigProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/configuration/PlatformConfigProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/validator/SurveyTypeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/annotation/SurveyTypeValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/validator/annotation/ValidSurveyType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/validator/ValidSurveyType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$Authenticate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$Authenticate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$Crypto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$Crypto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$Endpoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$Endpoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$GmailSetting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$GmailSetting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$KeyFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties$KeyFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/configuration/PlatformConfigProperties.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/service/impl/EmailNotificationImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/service/impl/EmailNotificationImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/validation/validator/SurveyTypeValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/validation/validator/annotation/ValidSurveyType$List.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clearpicture/platform/validation/validator/annotation/ValidSurveyType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/clearpicture-gsp-framework-1.0.3-exec.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/clearpicture-gsp-framework-1.0.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,23 +61,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="11" />
+          <entry key="java" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="11" />
+          <entry key="JAVA" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="8" />
+          <entry key="txt" value="65" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="8" />
+          <entry key="PLAIN_TEXT" value="65" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -138,7 +117,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/clearpicture/platform/validation/annotation/PasswordPolicy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -146,6 +125,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/clearpicture/platform/componant/StaticApplicationContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -316,6 +304,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="componant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CP-GSP-Framework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP-GSP-Framework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
+              <item name="configuration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CP-GSP-Framework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CP-GSP-Framework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="platform" type="462c0819:PsiDirectoryNode" />
               <item name="enums" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -375,7 +381,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545118120929" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545118353772" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -424,6 +430,21 @@
       <workItem from="1544096170244" duration="261000" />
       <workItem from="1544163296237" duration="10699000" />
     </task>
+    <task id="LOCAL-00001" summary="password validation policy added">
+      <created>1545118284265</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1545118284265</updated>
+    </task>
+    <task id="LOCAL-00002" summary="need to remove those from the git">
+      <created>1545118347676</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1545118347676</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -475,6 +496,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="password validation policy added" />
+    <MESSAGE value="need to remove those from the git" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to remove those from the git" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/clearpicture/platform/modelmapper/ModelMappingAware.java">
@@ -678,6 +704,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/clearpicture/platform/componant/StaticApplicationContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
