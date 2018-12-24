@@ -25,9 +25,7 @@ public class CryptoServiceImpl implements CryptoService {
     @Autowired
     private PlatformConfigProperties configs;
 
-    /*@Autowired
-    private TextEncryptor textEncryptor;*/
-
+    private TextEncryptor textEncryptor;
 
     private TextEncryptor entityIdEncryptor;
 
@@ -40,6 +38,7 @@ public class CryptoServiceImpl implements CryptoService {
     public void init() {
         Security.setProperty("crypto.policy", "unlimited");
         entityIdEncryptor = Encryptors.queryableText(configs.getCrypto().getPassword(), configs.getCrypto().getSalt());
+        textEncryptor = Encryptors.text(configs.getCrypto().getPassword(), configs.getCrypto().getSalt());
 
         //Generate an 8 character salt
         //String salt = KeyGenerators.string().generateKey();
@@ -71,6 +70,16 @@ public class CryptoServiceImpl implements CryptoService {
         } catch (Exception e) {
             throw new EntityIdCryptoException("decryption failed! value: " + text, e);
         }
+    }
+
+    @Override
+    public String encryptString(String text) {
+        return textEncryptor.encrypt(text);
+    }
+
+    @Override
+    public String decryptString(String text) {
+        return textEncryptor.decrypt(text);
     }
 
 

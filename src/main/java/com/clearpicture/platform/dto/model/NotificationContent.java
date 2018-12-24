@@ -18,6 +18,7 @@ public class NotificationContent {
     private String subject;
     private String bodyContent;
     private String recipient;
+    private boolean html;
 
 
     public NotificationContent(String sender, String subject, String bodyContent, String recipient) {
@@ -27,6 +28,7 @@ public class NotificationContent {
         this.recipient = recipient;
     }
 
+    public NotificationContent(){}
 
     public static class NotificationContentBuilder {
         private String sender;

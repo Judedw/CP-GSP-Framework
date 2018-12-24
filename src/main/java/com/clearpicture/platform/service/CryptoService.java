@@ -6,9 +6,9 @@ package com.clearpicture.platform.service;
  */
 public interface CryptoService {
 
-    /*String encryptString(String text);
+    String encryptString(String text);
 
-    String decryptString(String text);*/
+    String decryptString(String text);
 
     String encryptEntityId(Long value);
 
