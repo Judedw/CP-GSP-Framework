@@ -4,7 +4,7 @@ import org.springframework.security.core.AuthenticationException;
 
 /**
  * 
- * @author Virajith
+ * @author Nuwan
  *
  */
 public class ClientPortalAccessDeniedException extends AuthenticationException {

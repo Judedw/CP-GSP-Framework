@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * 
- * @author Virajith
+ * @author Nuwan
  *
  */
 public class StaticApplicationContext implements ApplicationContextAware {

@@ -5,7 +5,7 @@
 
 	<groupId>com.clearpicture.platform</groupId>
 	<artifactId>clearpicture-gsp-framework</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<packaging>jar</packaging>
 
 	<name>gsp-framework</name>
@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>2.0.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -25,7 +25,7 @@
         <apache-common-lang.version>3.7</apache-common-lang.version>
         <model-mapper.version>1.1.0</model-mapper.version>
         <querydsl.version>4.1.4</querydsl.version>
-
+        <spring-cloud.version>Greenwich.M3</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -58,13 +58,6 @@
             <version>1.4</version>
         </dependency>
 
-        <!--21072018-->
-        <!-- https://mvnrepository.com/artifact/com.github.jmnarloch/modelmapper-spring-boot-starter -->
-        <!--<dependency>
-            <groupId>com.github.jmnarloch</groupId>
-            <artifactId>modelmapper-spring-boot-starter</artifactId>
-            <version>1.0.1</version>
-        </dependency>-->
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
@@ -86,9 +79,18 @@
             <artifactId>querydsl-core</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
@@ -103,6 +105,18 @@
 
 
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -161,6 +175,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <profiles>
         <!-- Used to run the app on the local machine as standalone application -->
@@ -242,6 +267,7 @@
             </dependencies>
         </profile>
     </profiles>
+
 
 
 </project>

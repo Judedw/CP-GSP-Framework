@@ -2,7 +2,7 @@ package com.clearpicture.platform.enums;
 
 /**
  * 
- * @author Virajith
+ * @author Nuwan
  *
  */
 public enum RestApiResponseStatus {

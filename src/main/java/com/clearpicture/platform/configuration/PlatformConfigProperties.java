@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 /**
  * PlatformConfigProperties
  * Created by nuwan on 7/21/18.
@@ -24,6 +26,19 @@ public class PlatformConfigProperties {
     private GmailSetting gmailSetting;
 
     private String passwordPolicy;
+
+    private Auth auth;
+
+    @Data
+    public static class Auth {
+
+        private List<String> corsAllowedOrigins;
+
+        private boolean ms2msAuthEnabled;
+
+        private String ms2msAuthEndpoint;
+
+    }
 
     @Data
     public static class Crypto {

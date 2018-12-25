@@ -2,7 +2,7 @@ package com.clearpicture.platform.exception;
 
 /**
  * 
- * @author Virajith
+ * @author Nuwan
  *
  */
 public class EntityIdCryptoException extends BaseException {
