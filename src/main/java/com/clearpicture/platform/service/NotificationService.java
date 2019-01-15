@@ -15,5 +15,7 @@ public interface NotificationService {
 
     public boolean sendNotification(List<NotificationContent> notificationContents);
 
+    public boolean sendSingleNotification(NotificationContent notificationContent);
+
 
 }
