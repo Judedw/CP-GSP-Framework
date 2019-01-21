@@ -36,7 +36,7 @@ public class EmailServiceImpl implements EmailService {
 	private SimpleEmailServiceJavaMailSender mailSender;
 
 	@Override
-	public void sendEmail(EmailMessage message) {
+	public boolean sendEmail(EmailMessage message) throws Exception {
 		mailSender.send(new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws MessagingException, UnsupportedEncodingException {
 				MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true, "UTF-8");
@@ -48,6 +48,8 @@ public class EmailServiceImpl implements EmailService {
 				// mmh.addAttachment("doc.pdf", new ClassPathResource("doc.pdf"));
 			}
 		});
+
+		return true;
 	}
 
 	@Override

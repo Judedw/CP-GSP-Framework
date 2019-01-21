@@ -11,7 +11,7 @@ import com.clearpicture.platform.dto.EmailWithAttachment;
  */
 public interface EmailService {
 
-	public void sendEmail(EmailMessage message);
+	public boolean sendEmail(EmailMessage message) throws Exception;
 
 	/**
 	 * 
