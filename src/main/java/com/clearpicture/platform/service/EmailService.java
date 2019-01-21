@@ -6,7 +6,7 @@ import com.clearpicture.platform.dto.EmailWithAttachment;
 
 /**
  * 
- * @author Virajith
+ * @author Nuwan
  *
  */
 public interface EmailService {
