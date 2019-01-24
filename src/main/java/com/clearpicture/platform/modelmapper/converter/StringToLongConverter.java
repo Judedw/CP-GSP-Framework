@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * Created by nuwan on 7/21/18.
  */
 @Component
-public class StringToLongConverter implements Converter<String,Long> {
+public class StringToLongConverter implements Converter<String, Long> {
 
     @Autowired
     private CryptoService cryptoService;
@@ -24,14 +24,13 @@ public class StringToLongConverter implements Converter<String,Long> {
     private static final String ATTR_SURVEY_ID = "surveyId";
     private static final String ATTR_INTERACTION_ID = "interactionId";
 
-    public StringToLongConverter() {}
+    public StringToLongConverter() {
+    }
 
-    public Long convert(MappingContext<String, Long> mappingContext)
-    {
-        if (StringUtils.isNotBlank((CharSequence)mappingContext.getSource()))
-        {
+    public Long convert(MappingContext<String, Long> mappingContext) {
+        if (StringUtils.isNotBlank((CharSequence) mappingContext.getSource())) {
             if (mappingContext.getMapping() == null) {
-                return cryptoService.decryptEntityId((String)mappingContext.getSource());
+                return cryptoService.decryptEntityId((String) mappingContext.getSource());
             }
 
             String propertyName = mappingContext.getMapping().getLastDestinationProperty().getName();
@@ -40,7 +39,7 @@ public class StringToLongConverter implements Converter<String,Long> {
                     ("surveyId".equalsIgnoreCase(propertyName)) || ("interactionId".equalsIgnoreCase(propertyName)) ) {
                 return cryptoService.decryptEntityId((String)mappingContext.getSource());
             }
-            return mappingContext.getSource() == null ? null : Long.valueOf((String)mappingContext.getSource());
+            return mappingContext.getSource() == null ? null : Long.valueOf((String) mappingContext.getSource());
         }
 
         return null;

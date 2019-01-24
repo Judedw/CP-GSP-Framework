@@ -125,6 +125,71 @@ public class EmailNotificationImpl implements NotificationService {
         return successStatus;
     }
 
+
+
+    @Override
+    public boolean sendSingleNotification(NotificationContent notificationContent) {
+        Properties properties = getEmailProperties();
+        Session mailSession = Session.getDefaultInstance(properties, null);
+        boolean result = createAndSendSingleEmail(properties, mailSession, notificationContent);
+        return result;
+    }
+
+    public boolean createAndSendSingleEmail(Properties mailProperties, Session mailSession, NotificationContent content) {
+        boolean successStatus = false;
+        try {
+
+            String emailHost = configs.getGmailSetting().getHost();
+            String sender = configs.getGmailSetting().getSenderMail();
+            String senderPassword = configs.getGmailSetting().getSenderPassword();
+
+            log.info("...........emailHost............" + emailHost);
+            log.info("...........sender............" + sender);
+            log.info("...........senderPassword............" + senderPassword);
+
+            Transport transport = mailSession.getTransport("smtp");
+            transport.connect(emailHost, sender, senderPassword);
+
+                MimeMessage emailMessage = new MimeMessage(mailSession);
+                String recipient = content.getRecipient();
+                String subject = content.getSubject();
+                String bodyContent = content.getBodyContent();
+
+                try {
+                    emailMessage.setFrom(new InternetAddress(sender));
+                    emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+                    emailMessage.setSubject(subject);
+                    emailMessage.setContent(bodyContent, "text/html");
+                    emailMessage.setSentDate(new Date());
+
+                    transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+
+                } catch (AddressException addrEx) {
+                    successStatus = false;
+                    log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : ADDRESS SETTING..........");
+                    addrEx.printStackTrace();
+                    throw new ComplexValidationException("emailService", "createAndSendEmail.addressSettingError");
+                } catch (MessagingException msgEx) {
+                    successStatus = false;
+                    log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : MESSAGE EXCEPTION..........");
+                    msgEx.printStackTrace();
+                    throw new ComplexValidationException("emailService", "createAndSendEmail.messageWentWrong.");
+                }
+
+
+            transport.close();
+            successStatus = true;
+
+        } catch (Exception ex) {
+            successStatus = false;
+            log.error(".......ERROR IN EMAIL NOTIFICATION SERVICE : Transport Setting..........");
+            ex.printStackTrace();
+            throw new ComplexValidationException("emailService", "createAndSendEmail.transportSetting.");
+        }
+
+        return successStatus;
+    }
+
 // OLD VERSION OF EMAIL SENDERS
 //    public boolean createAndSendEmail(Properties mailProperties, Session mailSession, NotificationContent notificationContent) {
 //

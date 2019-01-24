@@ -29,6 +29,8 @@ public class PlatformConfigProperties {
 
     private Auth auth;
 
+    private Email email;
+
     @Data
     public static class Auth {
 
@@ -87,4 +89,13 @@ public class PlatformConfigProperties {
         private String authEnable;
         private String tlsEnable;
     }
+
+    @Data
+    public static class Email {
+
+        private String from;
+
+        private String fromName;
+    }
+
 }
