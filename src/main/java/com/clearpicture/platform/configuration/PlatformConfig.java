@@ -44,25 +44,30 @@ public class PlatformConfig {
         return new SimpleEmailServiceJavaMailSender(ses);
     }
 
-    @Primary
-    @Bean
-    CorsConfigurationSource corsConfigurationSource(
-            @Value("#{'${app.auth.corsAllowedOrigins}'.split(',')}") List<String> allowedOrigins) {
-
-        if (!CollectionUtils.isEmpty(allowedOrigins)) {
-            log.info("CORS allowed origins: {}",
-                    allowedOrigins.stream().collect(Collectors.joining(PlatformConstant.COMMA_DELIMITER)));
-        }
-
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(allowedOrigins);
-        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Collections.singletonList("*"));
-        configuration.addExposedHeader("Authorization");
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+//    @Primary
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource(
+//            @Value("#{'${app.auth.corsAllowedOrigins}'.split(',')}") List<String> allowedOrigins) {
+//
+//        if (!CollectionUtils.isEmpty(allowedOrigins)) {
+//            log.info("CORS allowed origins: {}",
+//                    allowedOrigins.stream().collect(Collectors.joining(PlatformConstant.COMMA_DELIMITER)));
+//        }else{
+//            log.info("CORS origins empty");
+//        }
+//
+//
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        //configuration.setAllowedOrigins(allowedOrigins);
+//        configuration.addAllowedOrigin("*");
+//        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
+//        configuration.setAllowCredentials(true);
+//        configuration.setAllowedHeaders(Collections.singletonList("*"));
+//        configuration.addExposedHeader("Authorization");
+//        configuration.addExposedHeader("Content-Type");
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 }
