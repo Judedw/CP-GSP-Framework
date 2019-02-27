@@ -1,6 +1,8 @@
 package com.clearpicture.platform.configuration;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import com.clearpicture.platform.util.PlatformConstant;
@@ -29,20 +31,7 @@ public class PlatformConfig {
     @Value("${spring.application.name}")
     private String appName;
 
-    @Bean
-    public AmazonSimpleEmailService amazonSimpleEmailService(AWSCredentialsProvider credentialsProvider,
-                                                             @Value("${cloud.aws.region.static}") String region) {
-        return AmazonSimpleEmailServiceClientBuilder
-                .standard()
-                .withCredentials(credentialsProvider)
-                .withRegion(region)
-                .build();
-    }
 
-    @Bean
-    public SimpleEmailServiceJavaMailSender simpleEmailServiceJavaMailSender(AmazonSimpleEmailService ses) {
-        return new SimpleEmailServiceJavaMailSender(ses);
-    }
 
 //    @Primary
 //    @Bean
