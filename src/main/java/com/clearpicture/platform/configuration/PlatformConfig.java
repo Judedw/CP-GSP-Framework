@@ -31,21 +31,21 @@ public class PlatformConfig {
     @Value("${spring.application.name}")
     private String appName;
 
-    // THIS  SHOULD BE REMOVED SINCE NEED TO ADD THIS TO USER SERVICE FOR FETCH DATA FROM DB : RAVEEN
-    @Bean
-    public AmazonSimpleEmailService amazonSimpleEmailService(AWSCredentialsProvider credentialsProvider,
-                                                             @Value("${cloud.aws.region.static}") String region) {
-        return AmazonSimpleEmailServiceClientBuilder
-                .standard()
-                .withCredentials(credentialsProvider)
-                .withRegion(region)
-                .build();
-    }
-
-    @Bean
-    public SimpleEmailServiceJavaMailSender simpleEmailServiceJavaMailSender(AmazonSimpleEmailService ses) {
-        return new SimpleEmailServiceJavaMailSender(ses);
-    }
+//    // THIS  SHOULD BE REMOVED SINCE NEED TO ADD THIS TO USER SERVICE FOR FETCH DATA FROM DB : RAVEEN
+//    @Bean
+//    public AmazonSimpleEmailService amazonSimpleEmailService(AWSCredentialsProvider credentialsProvider,
+//                                                             @Value("${cloud.aws.region.static}") String region) {
+//        return AmazonSimpleEmailServiceClientBuilder
+//                .standard()
+//                .withCredentials(credentialsProvider)
+//                .withRegion(region)
+//                .build();
+//    }
+//
+//    @Bean
+//    public SimpleEmailServiceJavaMailSender simpleEmailServiceJavaMailSender(AmazonSimpleEmailService ses) {
+//        return new SimpleEmailServiceJavaMailSender(ses);
+//    }
 
 
 //    @Primary
