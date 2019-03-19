@@ -25,6 +25,8 @@ public class PlatformConfigProperties {
 
     private GmailSetting gmailSetting;
 
+    private AwsS3Setting awsS3Setting;
+
     private String passwordPolicy;
 
     private Auth auth;
@@ -80,7 +82,19 @@ public class PlatformConfigProperties {
     }
 
     @Data
-    public static class GmailSetting{
+    public static class AwsS3Setting {
+
+        private String bucketName;
+        private String surveyFolderPath;
+        private String eventFolderPath;
+        private String promoFolderPath;
+        private String userFolderPath;
+        private String clientFolderPath;
+    }
+
+
+    @Data
+    public static class GmailSetting {
 
         private String host;
         private String senderMail;
