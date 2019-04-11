@@ -25,6 +25,8 @@ public class StringToLongConverter implements Converter<String, Long> {
     private static final String ATTR_INTERACTION_ID = "interactionId";
     private static final String ATTR_CREATED_USER_ID = "createdUserId";
     private static final String ATTR_MODIFIED_USER_ID = "lastModifiedUserId";
+    private static final String ATTR_CATEGORY_ID = "categoryId";
+    private static final String ATTR_COMMUNITY_ID = "communityId";
 
     public StringToLongConverter() {
     }
@@ -39,7 +41,8 @@ public class StringToLongConverter implements Converter<String, Long> {
             if (("id".equalsIgnoreCase(propertyName)) || ("voteId".equalsIgnoreCase(propertyName)) ||
                     ("productId".equalsIgnoreCase(propertyName)) || ("clientId".equalsIgnoreCase(propertyName)) ||
                     ("surveyId".equalsIgnoreCase(propertyName)) || ("interactionId".equalsIgnoreCase(propertyName))
-                    || "createdUserId".equalsIgnoreCase(propertyName) || "lastModifiedUserId".equalsIgnoreCase(propertyName)) {
+                    || ("createdUserId".equalsIgnoreCase(propertyName)) || ("lastModifiedUserId".equalsIgnoreCase(propertyName))
+                    || ("categoryId".equalsIgnoreCase(propertyName)) || ("communityId".equalsIgnoreCase(propertyName))) {
                 return cryptoService.decryptEntityId((String) mappingContext.getSource());
             }
             return mappingContext.getSource() == null ? null : Long.valueOf((String) mappingContext.getSource());

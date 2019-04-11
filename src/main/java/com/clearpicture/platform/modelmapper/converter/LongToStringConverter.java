@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Created by nuwan on 7/21/18.
  */
 @Component
-public class LongToStringConverter implements Converter<Long,String> {
+public class LongToStringConverter implements Converter<Long, String> {
 
     @Autowired
     private CryptoService cryptoService;
@@ -21,19 +21,22 @@ public class LongToStringConverter implements Converter<Long,String> {
     private static final String ATTR_PRODUCT_ID = "productId";
     private static final String ATTR_CLIENT_ID = "clientId";
     private static final String ATTR_SURVEY_ID = "surveyId";
+    private static final String ATTR_CATEGORY_ID = "categoryId";
+    private static final String ATTR_COMMUNITY_ID = "communityId";
 
-    public LongToStringConverter() {}
+    public LongToStringConverter() {
+    }
 
-    public String convert(MappingContext<Long, String> context)
-    {
+    public String convert(MappingContext<Long, String> context) {
         if (context.getSource() != null) {
             String propertyName = context.getMapping().getLastDestinationProperty().getName();
             if (("id".equalsIgnoreCase(propertyName)) || ("voteId".equalsIgnoreCase(propertyName)) ||
                     ("productId".equalsIgnoreCase(propertyName)) || ("clientId".equalsIgnoreCase(propertyName)) ||
-                    ("surveyId".equalsIgnoreCase(propertyName))) {
-                return cryptoService.encryptEntityId((Long)context.getSource());
+                    ("surveyId".equalsIgnoreCase(propertyName)) || ("categoryId".equalsIgnoreCase(propertyName))
+            || ("communityId".equalsIgnoreCase(propertyName))) {
+                return cryptoService.encryptEntityId((Long) context.getSource());
             }
-            return ((Long)context.getSource()).toString();
+            return ((Long) context.getSource()).toString();
         }
 
         return null;
