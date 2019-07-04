@@ -27,6 +27,10 @@ public class StringToLongConverter implements Converter<String, Long> {
     private static final String ATTR_MODIFIED_USER_ID = "lastModifiedUserId";
     private static final String ATTR_CATEGORY_ID = "categoryId";
     private static final String ATTR_COMMUNITY_ID = "communityId";
+    private static final String ATTR_USER_ID = "userId";
+    private static final String ATTR_MOBILE_ID = "mobileId";
+    private static final String ATTR_SENDER = "sender";
+    private static final String ATTR_RECIPIENT = "recipient";
 
     public StringToLongConverter() {
     }
@@ -42,7 +46,10 @@ public class StringToLongConverter implements Converter<String, Long> {
                     ("productId".equalsIgnoreCase(propertyName)) || ("clientId".equalsIgnoreCase(propertyName)) ||
                     ("surveyId".equalsIgnoreCase(propertyName)) || ("interactionId".equalsIgnoreCase(propertyName))
                     || ("createdUserId".equalsIgnoreCase(propertyName)) || ("lastModifiedUserId".equalsIgnoreCase(propertyName))
-                    || ("categoryId".equalsIgnoreCase(propertyName)) || ("communityId".equalsIgnoreCase(propertyName))) {
+                    || ("categoryId".equalsIgnoreCase(propertyName)) || ("communityId".equalsIgnoreCase(propertyName))
+                    || ("userId".equalsIgnoreCase(propertyName)) || ("mobileId".equalsIgnoreCase(propertyName))
+                    || ("sender".equalsIgnoreCase(propertyName))
+                    || ("recipient".equalsIgnoreCase(propertyName))) {
                 return cryptoService.decryptEntityId((String) mappingContext.getSource());
             }
             return mappingContext.getSource() == null ? null : Long.valueOf((String) mappingContext.getSource());

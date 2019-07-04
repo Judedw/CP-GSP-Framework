@@ -23,6 +23,10 @@ public class LongToStringConverter implements Converter<Long, String> {
     private static final String ATTR_SURVEY_ID = "surveyId";
     private static final String ATTR_CATEGORY_ID = "categoryId";
     private static final String ATTR_COMMUNITY_ID = "communityId";
+    private static final String ATTR_USER_ID = "userId";
+    private static final String ATTR_MOBILE_ID = "mobileId";
+    private static final String ATTR_SENDER = "sender";
+    private static final String ATTR_RECIPIENT = "recipient";
 
     public LongToStringConverter() {
     }
@@ -33,7 +37,9 @@ public class LongToStringConverter implements Converter<Long, String> {
             if (("id".equalsIgnoreCase(propertyName)) || ("voteId".equalsIgnoreCase(propertyName)) ||
                     ("productId".equalsIgnoreCase(propertyName)) || ("clientId".equalsIgnoreCase(propertyName)) ||
                     ("surveyId".equalsIgnoreCase(propertyName)) || ("categoryId".equalsIgnoreCase(propertyName))
-            || ("communityId".equalsIgnoreCase(propertyName))) {
+                    || ("communityId".equalsIgnoreCase(propertyName)) || ("userId".equalsIgnoreCase(propertyName))
+                    || ("mobileId".equalsIgnoreCase(propertyName)) || ("sender".equalsIgnoreCase(propertyName))
+                    || ("recipient".equalsIgnoreCase(propertyName))) {
                 return cryptoService.encryptEntityId((Long) context.getSource());
             }
             return ((Long) context.getSource()).toString();
