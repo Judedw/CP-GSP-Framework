@@ -57,10 +57,11 @@ public class LocationServiceImpl implements LocationService {
             String cityName = response.getCity().getName();
             String postal = response.getPostal().getCode();
             String state = response.getLeastSpecificSubdivision().getName();
+            String countryCode = response.getCountry().getIsoCode();
             double latitude = response.getLocation().getLatitude();
             double longitude = response.getLocation().getLongitude();
-            
-            IpLocationResponse locationResponse = new IpLocationResponse(ipAddress, countryName, cityName, latitude, longitude);
+
+            IpLocationResponse locationResponse = new IpLocationResponse(ipAddress, countryName, countryCode, cityName, latitude, longitude);
 
             return locationResponse;
         } catch (Exception ioe) {
